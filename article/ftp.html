@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>FTP服务器搭建</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pace-theme-flash.css">
+    <link rel="stylesheet" href="../css/d-audio.css">
+    <link rel="stylesheet" href="../css/article-detail.css">
+    <link rel="stylesheet" href="../css/code.css">
+    <link rel="stylesheet" href="../css/github-markdown.css">
+    <link rel="stylesheet" href="../css/vditor.css">
+    <link rel="shortcut icon" href="../img/my_info/user.jpeg">
+    <style>
+        .lazy-image {
+            background: url('../img/loading.gif') no-repeat center;
+            background-size: 26% 35%;
+            height: 100%;
+            width: 100%;
+        }
+
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+
+            .markdown-body h1 {
+                font-size: 1.35em;
+            }
+
+        }
+
+        .codehilite {
+            border-radius: 10px;
+        }
+
+        .article-content img {
+            max-width: 100%;
+        }
+
+        #outerdiv {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 200;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!--PC导航栏-->
+<nav class="nav-bar-holder">
+       <div class="nav-bar" id="nav-bar">
+           <div class="logo-box">
+               <a href="index.html" class="blog-title ta-c"><img style="vertical-align: top;" alt="logo"
+                       src="../img/my_info/user.jpeg" /></a>
+           </div>
+           <div class="nb-a-holder" id="home"><a class="nb-a ta-c" href="index.html">首页</a></div>
+           <div class="nb-a-holder"><a class="nb-a ta-c" href="category.html">分类</a></div>
+           <div class="nb-a-holder"><a class="nb-a ta-c" href="tag.html">标签墙</a></div>
+           <div class="nb-a-holder"><a class="nb-a ta-c" href="else_blog.html">我的其他博客</a></div>
+           <div class="nb-a-holder"><a class="nb-a ta-c" href="machine_learn.html">机器学习</a></div>
+           <!--搜索框-->
+           <div id="search-nb">
+               <span class="search-s fl">
+                   <label for="search-input"></label><input class="fl" type="text" id="search-input"
+                       placeholder="请输入关键字">
+                   <a class="search-icon fl" onclick="search_by_key()" href="javascript:void(0);"></a>
+               </span>
+           </div>
+       </div>
+   </nav>
+   <!--mobile导航栏-->
+   <nav class="mobile-nav">
+       <div class="logo-box">
+           <a href="index.html" class="blog-title ta-c">
+               <img style="vertical-align: top;" alt="logo" src="../img/my_info/user.jpeg" /></a>
+       </div>
+       <a id="mobile_cate" style="background-image: url('../img/cate.svg')" href="javascript:void(0);"></a>
+   </nav>
+   <ul id="nav-m-list">
+       <li id="cancel-li"><a class="fr" id="cancel" href="javascript:void(0);"></a></li>
+       <li id="m-img-li">
+           <img id="m-img" alt="苍茫误此生" src="../img/my_info/user.jpeg">
+       </li>
+       <li>
+           <span class="search-s fl">
+               <label for="search-input-m"></label><input class="fl" type="text" id="search-input-m" placeholder="关键词">
+               <a class="search-icon fl" onclick="m_search()" href="javascript:void(0);"></a>
+           </span>
+       </li>
+       <li><a class="w-h-100 fl" href="index.html">首页</a></li>
+       <li><a class="w-h-100 fl" href="category.html">分类</a></li>
+       <li><a class="w-h-100 fl" href="tag.html">标签墙</a></li>
+       <li><a class="w-h-100 fl" href="else_blog.html">我的其他博客</a></li>
+       <li><a class="w-h-100 fl" href="machine_learn.html">机器学习</a></li>
+   </ul>
+   <div id="d-audio" class="d-audio" style="width: 150px; z-index: 99; position: fixed; bottom: 5px; left: 5px;"></div>
+    <!--文章目录-->
+    <div class="toc">
+        <ul>
+            <li><a href="#_1">四、FTP</a>
+                <ul>
+                    <li><a href="#1">1. FTP协议</a>
+                        <ul>
+                            <li><a href="#1_1">(1) 概念</a></li>
+                            <li><a href="#1_2">(2) 两种工作模式</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#2">2. FTP搭建</a>
+                        <ul>
+                            <li><a href="#2_1">(1) 基于linux(例子中采用Debian11)</a></li>
+                            <li><a href="#2_2">(2) vsftpd配置</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!--主体-->
+    <section class="main">
+        <label for="article_id"></label><input hidden id="article_id" name="article_id" value="55">
+        <label for="user_id"></label><input hidden id="user_id" name="user_id"
+            value="{{ no such element: django.contrib.sessions.backends.cache.SessionStore object[&#39;user_id&#39;] }}">
+        <div class="left-box">
+            <div id="outerdiv">
+                <div id="innerdiv" style="position:absolute;"><img alt id="bigimg"
+                        style="box-shadow: 0 0 10px rgba(0,0,0,0.38)" src="" />
+                </div>
+            </div>
+            <!--文章内容-->
+            <div class="article-container">
+                <div class="article-content markdown-body">
+                    <h1 style="margin: 10px 0">FTP协议</h1>
+                    <div class="article-cate">
+                        <a href="category.html">后台</a>
+                        <a href="tag.html">C++</a>
+                    </div>
+                    <div class="writer-info">
+                        <span style="margin: 5px 0;">作者: </span>
+                        <span id="writer">ACID </span>
+                        <span id="write-time">2022-03-06 9:45:29</span>
+                        <span>阅读(<span id="read-number">48</span>)</span>
+                        <span>评论(<span id="read-number">0</span>)</span>
+                    </div>
+                    <h2 id="_1">四、FTP</h2>
+                    <h3 id="1">1. FTP协议</h3>
+                    <h4 id="1_1">(1) 概念</h4>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件传输协议（FTP）作为网络共享文件的传输协议，在网络应用软件中具有广泛的应用。FTP的目标是提高文件的共享性和可靠高效地传送数据。</p>
+                    <h4 id="1_2">(2) 两种工作模式</h4>
+					<h5 >1. 主动模式</h5>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在主动模式下，FTP客户端随机开启一个大于1024的端口N向服务器的21号端口发起连接，然后开放N+1号端口进行监听，并向服务器发出PORT N+1命令。服务器接收到命令后，会用其本地的FTP数据端口（通常是20）来连接客户端指定的端口N+1，进行数据传输。</p>
+					<h5 >2. 被动模式</h5>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 在被动模式下，FTP库户端随机开启一个大于1024的端口N向服务器的21号端口发起连接，同时会开启N+1号端口。然后向服务器发送PASV命令，通知服务器自己处于被动模式。服务器收到命令后，会开放一个大于1024的端口P进行监听，然后用PORT P命令通知客户端，自己的数据端口是P。客户端收到命令后，会通过N+1号端口连接服务器的端口P，然后在两个端口之间进行数据传输。</p>
+					
+                    <h3 id="2">2. FTP搭建</h3>
+                    <h4 id="2_1">(1) 基于linux(例子中采用Debian11)</h4>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已debian系统为例，搭建ftp服务器，其他linux发行版也可以
+                    Debian版本</p>
+					<img   src="../img/ftp/version.png">
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分区情况</p>
+					<img   src="../img/ftp/partion.png">
+                    <h4 id="2_2">(2) vsftpd下载和配置</h4>
+                    <h5>1.安装vsftpd（Very Secure FTP Daemon)</h5>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sudo apt-get install vsftdp</p>
+                    <img   src="../img/ftp/install_vsftpd.png">
+					<h5>2.安装并配置ufw防火墙</h5>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ufw（简单防火墙Uncomplicated FireWall）真正
+					地简化了 iptables，它从出现的这几年，已经成为 Ubuntu 和 Debian 等系统上的默认防火墙。</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如下配置ufw防火墙</p>
+					<img   src="../img/ftp/ufw_status.png">
+					<h5>3.配置vsftpd</h5>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;也就是配置<strong>vsftpd.conf文件</strong>
+					中的参数，我们配置为<strong>被动模式，被动端口设为35000~35002</strong></p>
+					<img   src="../img/ftp/conf.png">
+					<h5>4.端口映射(非虚拟机中的服务器不需要)</h5>
+					<img   src="../img/ftp/mapping.png">
+					<h5>5.测试ftp服务器(windows连接虚拟机里边的ftp服务器)</h5>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用ftp_acid用户测试</p>
+					<img   src="../img/ftp/connect.png">
+					<img   src="../img/ftp/up.png">
+					<p><strong>上传成功</strong></p>
+					<img  src="../img/ftp/success.png">
+           
+    <!--尾部-->
+    <footer class="footer">
+        <div class="footer-line">
+            <div class="icon-center">
+                <span class="icon-box"><a id="github-icon" target="_blank" href="https://github.com/ACID655"
+                        class="foot-icon"></a>
+                </span>
+                <span class="icon-box"><a id="qq-icon" target="_blank"
+                        href="tencent://Message/?Uin=728831518&amp;websiteName=q-zone.qq.com&amp;Menu=yes"
+                        class="foot-icon"></a>
+                </span>
+            </div>
+        </div>
+        <div class="footer-line">Powerde By <a href="https://github.com/ACID655"
+                target="_blank">ACID</a> • © 2020</div>
+        <div class="footer-line">点击还是该网站 <a href="" target="_blank">站点地图</a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/pace.min.js"></script>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script type="text/javascript" src="../js/d-audio.js"></script>
+    <script type="text/javascript" src="../js/vditor.min.js"></script>
+    <script type="text/javascript" src="../js/article-detail.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            showProcessingMessages: false, //关闭js加载过程信息
+            messageStyle: "none", //不显示信息
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] ], //行内公式选择$
+                displayMath: [ ["$$","$$"] ], //段内公式选择$$
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //避开某些标签
+                ignoreClass:"comment-content" //避开含该Class的标签
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"], //可选字体
+                showMathMenu: false //关闭右击菜单显示
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    <script type="text/javascript" defer>
+        //音乐插件
+        const myAudio = new Daudio({
+            ele: '#d-audio',
+            src: '../music/dearest_person.mp3',
+            imageurl: '../img/bg_music/yue.jpg',
+            name: '点击我播放音乐',
+            singer: '岳云鹏',
+            // 是否显示进度信息
+            showprogress: true,
+            // 是否循环
+            loop: true,
+            // '' 就是默认状态， cricle则是初始化就是圆形且可以旋转
+            initstate: 'cricle',
+            next: function () {},
+            ended: function () {}
+        });
+        //myAudio.play();
+
+        //图片懒加载
+        const lazyImage = new LazyImage('.lazy-image');
+    </script>
+</body>
+
+</html>

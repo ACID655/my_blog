@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Boundless-UI</title>
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/pace-theme-flash.css">
+    <link rel="stylesheet" href="./css/d-audio.css">
+    <link rel="stylesheet" href="./css/myPagination.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="shortcut icon" href="./img/my_info/user.jpeg">
+    <style rel="stylesheet">
+        .lazy-image {
+            background: url('./img/loading.gif') no-repeat center;
+            background-size: 26% 35%;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!--PC导航栏-->
+    <nav class="nav-bar-holder">
+        <div class="nav-bar" id="nav-bar">
+            <div class="logo-box">
+                <a href="index.html" class="blog-title ta-c"><img style="vertical-align: top;" alt="logo"
+                        src="./img/my_info/user.jpeg" /></a>
+            </div>
+            <div class="nb-a-holder" id="home"><a id="active" class="nb-a ta-c" href="index.html">算法与服务器</a></div>
+            <div class="nb-a-holder"><a class="nb-a ta-c" href="category.html">分类</a></div>
+            <div class="nb-a-holder"><a class="nb-a ta-c" href="tag.html">标签墙</a></div>
+            <div class="nb-a-holder"><a class="nb-a ta-c" href="else_blog.html">我的其他博客</a></div>
+            <div class="nb-a-holder"><a class="nb-a ta-c" href="machine_learn.html">机器学习</a></div>
+            <!--搜索框-->
+            <div id="search-nb">
+                <span class="search-s fl">
+                    <label for="search-input"></label><input class="fl" type="text" id="search-input"
+                        placeholder="请输入关键字">
+                    <a class="search-icon fl" onclick="search_by_key()" href="javascript:void(0);"></a>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <!--mobile导航栏-->
+    <nav class="mobile-nav">
+        <div class="logo-box">
+            <a href="index.html" class="blog-title ta-c">
+                <img style="vertical-align: top;" alt="logo"
+                    src="./img/my_info/user.jpeg" /></a>
+        </div>
+        <a id="mobile_cate" style="background-image: url('./img/cate.svg')" href="javascript:void(0);"></a>
+    </nav>
+    <ul id="nav-m-list">
+        <li id="cancel-li"><a class="fr" id="cancel" href="javascript:void(0);"></a></li>
+        <li id="m-img-li">
+            <img id="m-img" alt="ACID欢迎您" src="./img/my_info/user.jpeg">
+        </li>
+        <li>
+            <span class="search-s fl">
+                <label for="search-input-m"></label><input class="fl" type="text" id="search-input-m" placeholder="关键词">
+                <a class="search-icon fl" onclick="m_search()" href="javascript:void(0);"></a>
+            </span>
+        </li>
+        <li><a class="w-h-100 fl" href="index.html">算法与服务器</a></li>
+        <li><a class="w-h-100 fl" href="category.html">分类</a></li>
+        <li><a class="w-h-100 fl" href="tag.html">标签墙</a></li>
+        <li><a class="w-h-100 fl" href="else_blog.html">我的其他博客</a></li>
+        <li><a class="w-h-100 fl" href="machine_learn.html">机器学习</a></li>
+    </ul>
+    <div id="d-audio" class="d-audio" style="width: 150px; z-index: 99; position: fixed; bottom: 5px; left: 5px;"></div>
+    <!--主体-->
+    <div class="big-container" id="particles-js">
+        <article class="article">
+            <!--左容器-->
+            <div class="left-holder">
+                <!--文章内容-->
+                <div id="article-holder" style="width: 100%; float: left">
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="./article/stack.html" class="article-img-box">
+                                <img class=（1"lazy-image article-img" src="./img/stack/stack.jpg" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="./article/stack.html">栈和队列</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                一. 栈和队列
+
+                                1. 栈
+
+                                (1) 概念
+
+                                栈只能在一端进行插入或者删除操作，插入元素称为入栈，删除元素称为出栈。
+
+                                在存储结构上分为顺序栈和链栈。主要特点是先进后出（FI
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="read-number c-999 fl">47</span>
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2022-3-19</span>
+                                <span class="article-author one-line-overflow c-999">ACID</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="./article/segment.html" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/segment_tree/segment.jpg" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="./article/segment.html">线段树</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                二. 线段树
+
+                                假设有编号从1到n的n个点，每个点都存了一些信息，用[L,R]表示下标从L到R的这些点。
+                                线段树的用处就是，对编号连续的一些点进行修改或者统计操作，修改和统计的复杂度都是O(log2(n)).
+                                
+                                线段树的原理，就是，将[1,n]分解成若干特定的子区间(数量不超过4*n),然后，将每个区间[L,R]都分解为
+                                少量特定的子区间，通过对这些少量子区间的修改或者统计，来实现快速对[L,R]的修改或者统计。
+                                
+                                由此看出，用线段树统计的东西，必须符合区间加法，否则，不可能通过分成的子区间来得到[L,R]的统计结果。
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="read-number c-999 fl">47</span>
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2022-3-19</span>
+                                <span class="article-author one-line-overflow c-999">ACID</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="./article/exgcd" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/exgcd/exgcd.png" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="./article/exgcd.html">扩展欧几里得算法</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                三. 扩展欧几里得算法
+
+                                1. 扩展欧几里得算法
+
+                                (1) 概念
+
+                                在得到整数a，b的最大公因数后，还希望得到整数x,y；使得a*x + b*y = gcd(a,b)
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="read-number c-999 fl">47</span>
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2022-3-19</span>
+                                <span class="article-author one-line-overflow c-999">ACID</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="./article/ftp.html" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/ftp/ftp.jpg" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="./article/ftp.html">debian11上搭建FTP</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                四. FTP服务器搭建
+
+                                1. FTP协议
+
+                                (1) 概念
+
+                                FTP的目标是提高文件的共享性，提供非直接使用远程计算机，使存储介质对用户透明和可靠高效地传送数据。虽然我们也可以手工使用它，但是它的主要作用是供程序使用的。
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="read-number c-999 fl">47</span>
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2022-3-19</span>
+                                <span class="article-author one-line-overflow c-999">ACID</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="./article/AES.html" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/AES/cover.png" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="./article/AES.html">AES算法(c++实现)</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                五. AES算法
+
+                                1. 对称加密算法
+
+                                (1) 概念
+
+                                AES为分组密码，分组密码也就是把明文分成一组一组的，每组长度相等，每次加密一组数据，
+								直到加密完整个明文。在AES标准规范中，分组长度只能是128位，也就是说，每个分组为16个
+								字节（每个字节8位）。密钥的长度可以使用128位、192位或256位。密钥的长度不同，推荐加
+								密轮数也不同，
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="read-number c-999 fl">40K</span>
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2022-3-10</span>
+                                <span class="article-author one-line-overflow c-999">ACID</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="article/Persistent_tree.html" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/chairman_of_tree/theme.png" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="article/Persistent_tree.html">可持久化线段树和主席树</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                六. 可持久化线段树和主席树
+
+                                1. 区别
+
+                                (1) 概念
+
+                                可持久化线段树单纯指经过可持久化处理之后，能够查询、修改历史节点数据的结构，建立在基础线段树的基础之上；而主席树建立在权值线段树的基础之上，能够查询修改历史节点。二者本质区别在于纪念性可持久化的对象所维护的对象不同(一个维护权值、一个维护值域)。
+                                
+                                因此，可持久化线段树 ≠ 主席树，准确的说，主席树 ⊂ 可持久化线段树
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="read-number c-999 fl">47</span>
+                                <i class="fl"
+                                    style="background-image: url('./img/github.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2022-3-27</span>
+                                <span class="article-author one-line-overflow c-999">ACID</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="./article/ubuntu_3D.html" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/ubuntu_3D/linux.png" alt="" src="">
+                            </a>
+
+                            <div class="article-title">
+                                <a href="./article/ubuntu_3D.html">Ubuntu上的3D炫酷桌面</a>
+                            </div>
+			                <div class="article-cate"><a href="category.html">后台</a>
+			                    <a href="tag.html">C++</a>
+			                </div>
+                            <div class="article-detail-box c-666">
+                                七. Ubuntu上的3D炫酷桌面
+
+                                1. unity桌面
+                            </div>
+							
+                            <span class="article-tail-box">
+								<i class="fl"
+								    style="background-image: url('./img/github.svg')"></i>
+								<span class="read-number c-999 fl">47</span>
+								<i class="fl"
+								    style="background-image: url('./img/github.svg')"></i>
+								<span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2022-04-08</span>
+                                <span class="article-author one-line-overflow c-999">ACID</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="article.html" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/article.jpg" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="article.html">栈和队列</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                二. 栈和队列
+
+                                1. 栈
+
+                                (1) 概念
+
+                                栈只能在一端进行插入或者删除操作，插入元素称为入栈，删除元素称为出栈。
+
+                                在存储结构上分为顺序栈和链栈。主要特点是先进后出（FI
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/read-index.svg')"></i>
+                                <span class="read-number c-999 fl">47</span>
+                                <i class="fl"
+                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/comment-index.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2019-12-05</span>
+                                <span class="article-author one-line-overflow c-999">admin</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="article.html" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/article.jpg" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="article.html">栈和队列</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                二. 栈和队列
+
+                                1. 栈
+
+                                (1) 概念
+
+                                栈只能在一端进行插入或者删除操作，插入元素称为入栈，删除元素称为出栈。
+
+                                在存储结构上分为顺序栈和链栈。主要特点是先进后出（FI
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/read-index.svg')"></i>
+                                <span class="read-number c-999 fl">47</span>
+                                <i class="fl"
+                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/comment-index.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2019-12-05</span>
+                                <span class="article-author one-line-overflow c-999">admin</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="article-box">
+                        <div class="ab-content">
+                            <a href="article.html" class="article-img-box">
+                                <img class="lazy-image article-img" data-src="./img/article.jpg" alt="" src="">
+                            </a>
+                            <div class="article-title">
+                                <a href="article.html">栈和队列</a>
+                            </div>
+                            <div class="article-cate"><a href="category.html">后台</a>
+                                <a href="tag.html">C++</a>
+                            </div>
+                            <div class="article-detail-box c-666">
+                                二. 栈和队列
+
+                                1. 栈
+
+                                (1) 概念
+
+                                栈只能在一端进行插入或者删除操作，插入元素称为入栈，删除元素称为出栈。
+
+                                在存储结构上分为顺序栈和链栈。主要特点是先进后出（FI
+                            </div>
+                            <span class="article-tail-box">
+                                <i class="fl"
+                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/read-index.svg')"></i>
+                                <span class="read-number c-999 fl">47</span>
+                                <i class="fl"
+                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/comment-index.svg')"></i>
+                                <span class="comment-number c-999 fl">0</span>
+                                <span class="article-date c-999">2019-12-05</span>
+                                <span class="article-author one-line-overflow c-999">admin</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--分页指示器-->
+                <div id="pagination" class="pagination fl"></div>
+            </div>
+
+            <!--右容器-->
+            <div class="right-holder">
+                <!--个人介绍-->
+                <div class="column-container">
+                    <ul class="column_box" id="like-box">
+                        <li class="column-title">
+                            <span class="at-sort b-b-ece fl"><a class="at-sort-comment-a c-666 fl">个人介绍</a></span>
+                        </li>
+                        <li class="person-img-li">
+                            <img alt="头像" id="person-img"
+                                src="./img/my_info/user.jpeg">
+                        </li>
+                        <li class="person-intro-detail gradient-text">
+                            <h1>欢迎光临ACID的博客</h1>
+                        </li>
+                        <li class="person-intro-detail">
+                            <h3>网站简介：基于 Go + Vue 的极简主义博客</h3>
+                        </li>
+                        <li class="person-intro-detail">
+                            <h3>技能：ACM算法，搭建FTP服务器</h3>
+                        </li>
+                        <li class="person-intro-detail">
+                            <h3></h3>
+                        </li>
+                        <li class="person-intro-detail">
+                            <h3>多多指教</h3>
+                        </li>
+                    </ul>
+                </div>
+                <!--猜你喜欢-->
+                <div class="column-container">
+                    <ul class="column_box" id="like-box">
+                        <li class="column-title">
+                            <span class="at-sort b-b-ece fl"><a class="at-sort-comment-a c-666 fl">猜你喜欢</a></span>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">栈和队列</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">线段树</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">扩展欧几里得算法</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">linux上搭建FTP服务器</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">最小生成树算法</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">最短路径算法</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--点击排行-->
+                <div class="column-container">
+                    <ul class="column_box" id="like-box">
+                        <li class="column-title">
+                            <span class="at-sort b-b-ece fl">
+                                <a class="at-sort-comment-a c-666 fl">点击排行</a>
+                            </span>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">极简的个人博客模板，支持响应式布局</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">极简的个人博客模板，支持响应式布局</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">极简的个人博客模板，支持响应式布局</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">极简的个人博客模板，支持响应式布局</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">极简的个人博客模板，支持响应式布局</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">极简的个人博客模板，支持响应式布局</a>
+                        </li>
+                        <li class="column-category">
+                            <a href="article.html">极简的个人博客模板，支持响应式布局</a>
+                        </li>
+                                                <li class="column-category">
+                            <a href="article.html">极简的个人博客模板，支持响应式布局</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </div>
+    <!--尾部-->
+    <footer class="footer">
+        <div class="footer-line">
+            <div class="icon-center">
+                <span class="icon-box"><a id="github-icon" target="_blank" href="https://github.com/ACID655"
+                        class="foot-icon"></a>
+                </span>
+                <span class="icon-box"><a id="qq-icon" target="_blank"
+                        href="tencent://Message/?Uin=728831518&amp;websiteName=q-zone.qq.com&amp;Menu=yes"
+                        class="foot-icon"></a>
+                </span>
+            </div>
+        </div>
+        <div class="footer-line">Powerde By <a href="https://github.com/ACID655"
+                target="_blank">BoundlessUI</a> • © 2020</div>
+        <div class="footer-line">点击还是该站点 <a href="" target="_blank">站点地图</a>
+        </div>
+    </footer>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="./js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="./js/pace.min.js"></script>
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/d-audio.js"></script>
+    <script type="text/javascript" src="./js/myPagination.js"></script>
+    <script type="text/javascript">
+        // 分页
+        const pagination = new myPagination({
+            id: 'pagination',
+            curPage: 1, //初始页码
+            pageTotal: 3, //总页数
+            pageAmount: 10, //每页多少条
+            dataTotal: 29, //总共多少条数据
+            pageSize: 3, //可选,分页个数
+            //showPageTotalFlag: true, //是否显示数据统计
+            //showSkipInputFlag: true, //是否支持跳转
+            getPage: function (page) {
+                console.log("current page: ", page);
+            }
+        });
+
+        // 音乐插件
+        const myAudio = new Daudio({
+            ele: '#d-audio',
+            src: './music/dearest_person.mp3',
+            imageurl: './img/bg_music/yue.jpg',
+            name: '点击我播放音乐',
+            singer: '岳云鹏',
+            // 是否显示进度信息
+            showprogress: true,
+            // 是否循环
+            loop: true,
+            // '' 就是默认状态， cricle则是初始化就是圆形且可以旋转
+            initstate: 'cricle',
+            next: function () {},
+            ended: function () {}
+        });
+        // myAudio.play();
+
+        // 图片懒加载
+        const lazyImage = new LazyImage('.lazy-image');
+    </script>
+</body>
+
+</html>
